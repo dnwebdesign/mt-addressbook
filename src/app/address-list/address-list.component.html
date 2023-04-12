@@ -1,18 +1,16 @@
-<section>
+<div>
     <h1>Adressliste</h1>
     <ul>
         <li *ngFor="let address of addresses">
-            <article>
-                <h2>{{ address.name }}</h2>
-                <p>
-                    Telefon: {{ address.phone }}<br>
-                    E-Mail: <a href="mailto:{{ address.mail }}">{{ address.mail }}</a>
-                </p>
-                <address>
-                    {{ address.street }} {{ address.streetNo }}<br>
-                    {{ address.zip }} {{ address.location }}
-                </address>
-            </article>
+            <h2>{{ address.name }}</h2>
+            <p>
+                Telefon: {{ address.phone }}<br>
+                E-Mail: <a href="mailto:{{ address.mail }}">{{ address.mail }}</a>
+            </p>
+            <address>
+                {{ address.street }} {{ address.streetNo }}<br>
+                {{ address.zip }} {{ address.location }}
+            </address>
         </li>
     </ul>
-</section>
+</div>

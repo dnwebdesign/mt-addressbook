@@ -16,4 +16,9 @@ export class AddressListComponent {
     ngOnInit(): void {
         this.addresses = this.addressService.getAddresses();
     }
+
+    onDeleteAddress(id: number): void {
+        this.addressService.deleteAddress(id);
+        this.addresses = this.addressService.getAddresses();
+    }
 }

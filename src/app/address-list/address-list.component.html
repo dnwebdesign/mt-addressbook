@@ -11,6 +11,7 @@
                 {{ address.street }} {{ address.streetNo }}<br>
                 {{ address.zip }} {{ address.location }}
             </address>
+            <button (click)="onDeleteAddress(address.id)">Löschen</button>
         </li>
     </ul>
 </div>

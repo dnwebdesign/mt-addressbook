@@ -1,43 +1,47 @@
-<div>
-    <h1>Adressliste</h1>
-    <ul>
-        <li *ngFor="let address of addresses">
-            <h2>{{ address.name }}</h2>
-            <p>
-                Telefon: {{ address.phone }}<br>
-                E-Mail: <a href="mailto:{{ address.mail }}">{{ address.mail }}</a>
-            </p>
-            <address>
-                {{ address.street }} {{ address.streetNo }}<br>
-                {{ address.zip }} {{ address.location }}
-            </address>
-            <button (click)="onDeleteAddress(address.id)">Löschen</button>
+<div class="container">
+    <ul class="address-list">
+        <li *ngFor="let address of addresses" class="address-list__item">
+            <div class="address-list__item__details">
+                <a [routerLink]="['/address', address.id]" class="address-list__item__details__link">{{ address.name }}</a>
+            </div>
+            <div class="address-list__item__actions">
+                <button class="address-list__item__actions__button address-list__item__actions__edit" (click)="onEditAddress(address)">Bearbeiten</button>
+                <button class="address-list__item__actions__button address-list__item__actions__delete" (click)="onDeleteAddress(address.id)">Löschen</button>
+            </div>
         </li>
     </ul>
 
-    <form (ngSubmit)="onAddAddress()" #addressForm="ngForm">
-        <label for="input-name">Name:</label>
-        <input type="text" name="name" id="input-name" [(ngModel)]="newAddress.name" required>
-
-        <label for="input-phone">Telefon:</label>
-        <input type="text" name="phone" id="input-phone" [(ngModel)]="newAddress.phone" required>
-
-        <label for="input-mail">E-Mail:</label>
-        <input type="email" name="mail" id="input-mail" [(ngModel)]="newAddress.mail" required>
-
-        <label for="input-street">Straße:</label>
-        <input type="text" name="street" id="input-street" [(ngModel)]="newAddress.street" required>
-
-        <label for="input-streetNo">Hausnummer:</label>
-        <input type="text" name="streetNo" id="input-streetNo" [(ngModel)]="newAddress.streetNo" required>
-
-        <label for="input-zip">PLZ:</label>
-        <input type="text" name="zip" id="input-zip" [(ngModel)]="newAddress.zip" required>
-
-        <label for="input-location">Ort:</label>
-        <input type="text" name="location" id="input-location" [(ngModel)]="newAddress.location" required>
-
-        <button type="submit">Adresse hinzufügen</button>
+    <form class="new-address-form" (ngSubmit)="onAddAddress()" #addressForm="ngForm">
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-name">Name:</label>
+            <input class="new-address-form__field__input" type="text" name="name" id="input-name" [(ngModel)]="newAddress.name" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-phone">Telefon:</label>
+            <input class="new-address-form__field__input" type="text" name="phone" id="input-phone" [(ngModel)]="newAddress.phone" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-mail">E-Mail:</label>
+            <input class="new-address-form__field__input" type="email" name="mail" id="input-mail" [(ngModel)]="newAddress.mail" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-street">Straße:</label>
+            <input class="new-address-form__field__input" type="text" name="street" id="input-street" [(ngModel)]="newAddress.street" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-streetNo">Hausnummer:</label>
+            <input class="new-address-form__field__input" type="text" name="streetNo" id="input-streetNo" [(ngModel)]="newAddress.streetNo" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-zip">PLZ:</label>
+            <input class="new-address-form__field__input" type="text" name="zip" id="input-zip" [(ngModel)]="newAddress.zip" required>
+        </div>
+        <div class="new-address-form__field">
+            <label class="new-address-form__field__label" for="input-location">Ort:</label>
+            <input class="new-address-form__field__input" type="text" name="location" id="input-location" [(ngModel)]="newAddress.location" required>
+        </div>
+        <div class="new-address-form__submit">
+            <button class="new-address-form__submit__button" type="submit">Adresse hinzufügen</button>
+        </div>
     </form>
 </div>
-

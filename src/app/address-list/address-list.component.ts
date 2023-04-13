@@ -34,6 +34,10 @@ export class AddressListComponent implements OnInit {
         this.newAddress = this.createEmptyAddressInput();
     }
 
+    onEditAddress(address: Address): void {
+        console.log("address editing of address with id " + address.id + " goes here.");
+    }
+
     onDeleteAddress(id: number): void {
         this.addressService.deleteAddress(id);
         this.addresses = this.addressService.getAddresses();

@@ -9,9 +9,13 @@
                 <button class="address-list__item__actions__button address-list__item__actions__delete" (click)="onDeleteAddress(address.id)">Löschen</button>
             </div>
         </li>
+        <li class="address-list__add" (click)="showAddAddressForm = !showAddAddressForm">
+            <span class="address-list__add__icon">+</span>
+            <span class="address-list__add__text">Neue Adresse hinzufügen</span>
+        </li>
     </ul>
 
-    <form class="new-address-form" (ngSubmit)="onAddAddress()" #addressForm="ngForm">
+    <form *ngIf="showAddAddressForm" class="new-address-form" (ngSubmit)="onAddAddress()" #addressForm="ngForm">
         <div class="new-address-form__field">
             <label class="new-address-form__field__label" for="input-name">Name:</label>
             <input class="new-address-form__field__input" type="text" name="name" id="input-name" [(ngModel)]="newAddress.name" required>

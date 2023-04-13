@@ -11,6 +11,7 @@ import {AddressInput} from "../shared/address-input";
 export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
     newAddress: AddressInput = this.createEmptyAddressInput();
+    showAddAddressForm = false;
 
     constructor(private addressService: AddressService) {
     }

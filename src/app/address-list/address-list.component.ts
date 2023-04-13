@@ -13,6 +13,7 @@ export class AddressListComponent implements OnInit {
     newAddress: AddressInput = this.createEmptyAddressInput();
     showAddressForm = false;
     @Output() addressAdded = new EventEmitter<void>();
+    selectedAddress: Address | null = null;
 
     constructor(private addressService: AddressService) {
     }
@@ -28,6 +29,14 @@ export class AddressListComponent implements OnInit {
     onDeleteAddress(id: number): void {
         this.addressService.deleteAddress(id);
         this.addresses = this.addressService.getAddresses();
+    }
+
+    selectAddress(id: number): void {
+        this.selectedAddress = this.addressService.getAddressById(id);
+    }
+
+    toggleAddressForm() {
+        this.showAddressForm = !this.showAddressForm;
     }
 
     private createEmptyAddressInput(): AddressInput {

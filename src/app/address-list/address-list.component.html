@@ -1,24 +1,26 @@
-<div class="address-list">
-    <ul class="address-list">
-        <li *ngFor="let address of addresses" class="address-list__item">
-            <div class="address-list__item__details">
-                <a [routerLink]="['/address', address.id]"
-                   class="address-list__item__details__link">{{ address.name }}</a>
-            </div>
-            <div class="address-list__item__actions">
-                <button (click)="onEditAddress(address)"
-                        class="address-list__item__actions__button address-list__item__actions__edit">Bearbeiten
-                </button>
-                <button (click)="onDeleteAddress(address.id)"
-                        class="address-list__item__actions__button address-list__item__actions__delete">Löschen
-                </button>
-            </div>
-        </li>
-        <li (click)="showAddressForm = !showAddressForm" class="address-list__add">
-            <span class="address-list__add__icon">+</span>
-            <span class="address-list__add__text">Neue Adresse hinzufügen</span>
-        </li>
-    </ul>
-
-    <mt-address-form *ngIf="showAddressForm"></mt-address-form>
+<div class="container">
+    <div class="address-list">
+        <ul>
+            <li (click)="selectAddress(address.id)" *ngFor="let address of addresses" class="address-list__item"
+                tabindex="0">
+                <div class="address-list__item__details">
+                    <span class="address-list__item__details__link">{{ address.name }}</span>
+                </div>
+                <div class="address-list__item__actions">
+                    <button (click)="onEditAddress(address)"
+                            class="address-list__item__actions__button address-list__item__actions__edit">Bearbeiten
+                    </button>
+                    <button (click)="onDeleteAddress(address.id)"
+                            class="address-list__item__actions__button address-list__item__actions__delete">Löschen
+                    </button>
+                </div>
+            </li>
+            <li (click)="toggleAddressForm()" *ngIf="!showAddressForm" class="address-list__add">
+                <span class="address-list__add__icon">+</span>
+                <span class="address-list__add__text">Neue Adresse hinzufügen</span>
+            </li>
+        </ul>
+        <mt-address-form (closeAddressForm)="toggleAddressForm()" *ngIf="showAddressForm"></mt-address-form>
+    </div>
+    <mt-address-details *ngIf="selectedAddress" [address]="selectedAddress"></mt-address-details>
 </div>

@@ -1,17 +1,16 @@
 @import './variables';
 
 body {
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-    color: $text-color;
-    background-color: $background-color;
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  color: $text-color;
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: $padding-large;
+  max-width: 1200px;
+  margin: auto;
 }

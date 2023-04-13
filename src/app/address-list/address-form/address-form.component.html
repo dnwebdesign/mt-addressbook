@@ -1,4 +1,4 @@
-<form #addAddressForm="ngForm" (ngSubmit)="addAddress()" class="address-form">
+<form (ngSubmit)="addAddress()" class="address-form">
     <div class="address-form__field">
         <label class="address-form__field__label" for="input-name">Name:</label>
         <input [(ngModel)]="newAddress.name" class="address-form__field__input" id="input-name" name="name"
@@ -37,7 +37,11 @@
                name="location"
                required type="text">
     </div>
-    <div class="address-form__submit">
-        <button class="address-form__submit__button" type="submit">Adresse hinzufügen</button>
+    <div class="address-form__actions">
+        <button class="address-form__actions__button address-form__actions__submit"
+                type="submit">Adresse hinzufügen
+        </button>
+        <button (click)="onCloseForm()" class="address-form__actions__button address-form__actions__close">X
+        </button>
     </div>
 </form>

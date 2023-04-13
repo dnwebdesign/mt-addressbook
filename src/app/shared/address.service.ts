@@ -17,6 +17,11 @@ export class AddressService {
         return this.addresses;
     }
 
+    getAddressById(id: number): Address | null {
+        const address = this.addresses.find(adresse => adresse.id === id);
+        return address || null;
+    }
+
     addAddress(address: Address): void {
         address.id = this.generateAddressId();
         this.addresses.push(address);

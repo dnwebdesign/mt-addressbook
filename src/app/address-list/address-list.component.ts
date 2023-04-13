@@ -3,7 +3,7 @@ import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
 
 @Component({
-    selector: 'app-address-list',
+    selector: 'mt-address-list',
     templateUrl: './address-list.component.html',
     styleUrls: ['./address-list.component.scss']
 })

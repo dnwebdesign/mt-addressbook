@@ -1,0 +1,43 @@
+<form #addAddressForm="ngForm" (ngSubmit)="addAddress()" class="address-form">
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-name">Name:</label>
+        <input [(ngModel)]="newAddress.name" class="address-form__field__input" id="input-name" name="name"
+               required type="text">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-phone">Telefon:</label>
+        <input [(ngModel)]="newAddress.phone" class="address-form__field__input" id="input-phone" name="phone"
+               required type="text">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-mail">E-Mail:</label>
+        <input [(ngModel)]="newAddress.mail" class="address-form__field__input" id="input-mail" name="mail"
+               required type="email">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-street">Straße:</label>
+        <input [(ngModel)]="newAddress.street" class="address-form__field__input" id="input-street"
+               name="street"
+               required type="text">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-streetNo">Hausnummer:</label>
+        <input [(ngModel)]="newAddress.streetNo" class="address-form__field__input" id="input-streetNo"
+               name="streetNo"
+               required type="text">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-zip">PLZ:</label>
+        <input [(ngModel)]="newAddress.zip" class="address-form__field__input" id="input-zip" name="zip"
+               required type="text">
+    </div>
+    <div class="address-form__field">
+        <label class="address-form__field__label" for="input-location">Ort:</label>
+        <input [(ngModel)]="newAddress.location" class="address-form__field__input" id="input-location"
+               name="location"
+               required type="text">
+    </div>
+    <div class="address-form__submit">
+        <button class="address-form__submit__button" type="submit">Adresse hinzufügen</button>
+    </div>
+</form>

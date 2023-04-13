@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddressListComponent } from './address-list/address-list.component';
+import { AddressFormComponent } from './address-list/address-form/address-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddressListComponent
+    AddressListComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,

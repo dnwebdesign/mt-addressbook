@@ -1,118 +1,67 @@
 @import '../styles/variables';
 
 .address-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 
-    &__item {
-        padding: $padding-medium;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        margin-bottom: $margin-small;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $card-color;
-
-        &__details {
-            &__link {
-                text-decoration: none;
-                color: $primary-color;
-                font-weight: bold;
-            }
-        }
-
-        &__actions {
-            display: flex;
-
-            &__button {
-                margin-left: $margin-small;
-                padding: $padding-small;
-                background-color: transparent;
-                border: none;
-                cursor: pointer;
-            }
-
-            &__edit {
-                color: $secondary-color;
-            }
-
-            &__delete {
-                color: $error-color;
-            }
-        }
-    }
-
-    &__add {
-        padding: $padding-medium;
-        border-radius: 4px;
-        border: 1px dashed rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: background-color 0.3s;
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        &__icon {
-            font-size: 24px;
-            margin-right: $margin-small;
-        }
-
-        &__text {
-        }
-    }
-}
-
-.new-address-form {
+  &__item {
+    padding: $padding-medium;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-bottom: $margin-small;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: $margin-large;
+    align-items: center;
+    background-color: $card-color;
 
-    &__field {
-        flex-basis: calc(33% - #{$padding-medium});
-        margin-bottom: $margin-medium;
-
-        &__label {
-            display: block;
-            margin-bottom: $padding-small;
-        }
-
-        &__input {
-            width: 100%;
-            padding: $padding-small;
-            font-size: $font-size-base;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            outline: none;
-            transition: border-color 0.3s;
-
-            &:focus {
-                border-color: $primary-color;
-            }
-        }
+    &__details {
+      &__link {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: bold;
+      }
     }
 
-    &__submit {
-        flex-basis: 100%;
-        text-align: right;
+    &__actions {
+      display: flex;
 
-        &__button {
-            padding: $padding-small $padding-medium;
-            font-size: $font-size-base;
-            color: #fff;
-            background-color: $primary-color;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+      &__button {
+        margin-left: $margin-small;
+        padding: $padding-small;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
 
-            &:hover {
-                background-color: darken($primary-color, 10%);
-            }
-        }
+      &__edit {
+        color: $secondary-color;
+      }
+
+      &__delete {
+        color: $error-color;
+      }
     }
+  }
+
+  &__add {
+    padding: $padding-medium;
+    border-radius: 4px;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &__icon {
+      font-size: 24px;
+      margin-right: $margin-small;
+    }
+
+    &__text {
+    }
+  }
 }

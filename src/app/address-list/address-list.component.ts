@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
 import {AddressInput} from "../shared/address-input";
@@ -11,28 +11,14 @@ import {AddressInput} from "../shared/address-input";
 export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
     newAddress: AddressInput = this.createEmptyAddressInput();
-    showAddAddressForm = false;
+    showAddressForm = false;
+    @Output() addressAdded = new EventEmitter<void>();
 
     constructor(private addressService: AddressService) {
     }
 
     ngOnInit(): void {
         this.addresses = this.addressService.getAddresses();
-    }
-
-    onAddAddress(): void {
-        const id = this.addressService.generateAddressId();
-        this.addressService.addAddress(new Address(
-            id,
-            this.newAddress.name,
-            this.newAddress.phone,
-            this.newAddress.mail,
-            this.newAddress.street,
-            this.newAddress.streetNo,
-            this.newAddress.zip,
-            this.newAddress.location
-        ));
-        this.newAddress = this.createEmptyAddressInput();
     }
 
     onEditAddress(address: Address): void {

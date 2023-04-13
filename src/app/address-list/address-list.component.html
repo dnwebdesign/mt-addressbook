@@ -14,4 +14,30 @@
             <button (click)="onDeleteAddress(address.id)">Löschen</button>
         </li>
     </ul>
+
+    <form (ngSubmit)="onAddAddress()" #addressForm="ngForm">
+        <label for="input-name">Name:</label>
+        <input type="text" name="name" id="input-name" [(ngModel)]="newAddress.name" required>
+
+        <label for="input-phone">Telefon:</label>
+        <input type="text" name="phone" id="input-phone" [(ngModel)]="newAddress.phone" required>
+
+        <label for="input-mail">E-Mail:</label>
+        <input type="email" name="mail" id="input-mail" [(ngModel)]="newAddress.mail" required>
+
+        <label for="input-street">Straße:</label>
+        <input type="text" name="street" id="input-street" [(ngModel)]="newAddress.street" required>
+
+        <label for="input-streetNo">Hausnummer:</label>
+        <input type="text" name="streetNo" id="input-streetNo" [(ngModel)]="newAddress.streetNo" required>
+
+        <label for="input-zip">PLZ:</label>
+        <input type="text" name="zip" id="input-zip" [(ngModel)]="newAddress.zip" required>
+
+        <label for="input-location">Ort:</label>
+        <input type="text" name="location" id="input-location" [(ngModel)]="newAddress.location" required>
+
+        <button type="submit">Adresse hinzufügen</button>
+    </form>
 </div>
+

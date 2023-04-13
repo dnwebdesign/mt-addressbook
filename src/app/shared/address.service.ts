@@ -17,7 +17,16 @@ export class AddressService {
         return this.addresses;
     }
 
+    addAddress(address: Address): void {
+        address.id = this.generateAddressId();
+        this.addresses.push(address);
+    }
+
     deleteAddress(id: number): void {
         this.addresses = this.addresses.filter(addresses => addresses.id !== id);
+    }
+
+    generateAddressId(): number {
+        return Math.max(...this.addresses.map(address => address.id)) + 1;
     }
 }

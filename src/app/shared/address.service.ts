@@ -13,9 +13,6 @@ export class AddressService {
         new Address(5, 'Martin Weber', '089-2468101', 'martin.weber@example.com', 'Leopoldstraße', '45', '80802', 'München')
     ];
 
-    constructor() {
-    }
-
     getAddresses(): Address[] {
         return this.addresses;
     }

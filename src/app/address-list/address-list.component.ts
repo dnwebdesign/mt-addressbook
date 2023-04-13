@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
 
@@ -7,7 +7,7 @@ import {AddressService} from "../shared/address.service";
     templateUrl: './address-list.component.html',
     styleUrls: ['./address-list.component.scss']
 })
-export class AddressListComponent {
+export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
 
     constructor(private addressService: AddressService) {

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
 import {AddressInput} from "../shared/address-input";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'mt-address-list',
@@ -15,7 +16,7 @@ export class AddressListComponent implements OnInit {
     @Output() addressAdded = new EventEmitter<void>();
     selectedAddress: Address | null = null;
 
-    constructor(private addressService: AddressService) {
+    constructor(private addressService: AddressService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -32,7 +33,7 @@ export class AddressListComponent implements OnInit {
     }
 
     selectAddress(id: number): void {
-        this.selectedAddress = this.addressService.getAddressById(id);
+        this.router.navigate(['/address-details', id]);
     }
 
     toggleAddressForm() {

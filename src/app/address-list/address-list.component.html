@@ -8,19 +8,21 @@
                 </div>
                 <div class="address-list__item__actions">
                     <button (click)="onEditAddress(address)"
-                            class="address-list__item__actions__button address-list__item__actions__edit">Bearbeiten
+                            class="address-list__item__actions__button address-list__item__actions__edit">
+                        <span class="material-icons">edit</span>
                     </button>
                     <button (click)="onDeleteAddress(address.id)"
-                            class="address-list__item__actions__button address-list__item__actions__delete">Löschen
+                            class="address-list__item__actions__button address-list__item__actions__delete">
+                        <span class="material-icons">delete_forever</span>
                     </button>
                 </div>
             </li>
-            <li (click)="toggleAddressForm()" *ngIf="!showAddressForm" class="address-list__add">
-                <span class="address-list__add__icon">+</span>
-                <span class="address-list__add__text">Neue Adresse hinzufügen</span>
+            <li class="address-list__add">
+                <a class="address-list__add_link" routerLink="/address-form">
+                    <span class="address-list__add__link__icon material-icons">add</span>
+                    <span class="address-list__add__link__text">Neue Adresse hinzufügen</span>
+                </a>
             </li>
         </ul>
-        <mt-address-form (closeAddressForm)="toggleAddressForm()" *ngIf="showAddressForm"></mt-address-form>
     </div>
-    <mt-address-details *ngIf="selectedAddress" [address]="selectedAddress"></mt-address-details>
 </div>

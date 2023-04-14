@@ -1,79 +1,74 @@
 @import '../styles/variables';
 
-.container {
-  display: grid;
-  flex-direction: row;
-  grid-template-columns: 30% 70%;
-  grid-gap: $padding-large;
+.address-list {
+  list-style: none;
+  padding: 0;
 
-  .address-list {
-    list-style: none;
-    padding: 0;
+  &__item {
+    padding: $padding-medium;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-bottom: $margin-small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $card-color;
 
-    &__item {
-      padding: $padding-medium;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-      margin-bottom: $margin-small;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $card-color;
+    &:hover {
+      cursor: pointer;
+    }
 
-      &:hover {
-        cursor: pointer;
-      }
+    &:focus-within {
+      outline: 2px solid $primary-color;
+    }
 
-      &:focus-within {
-        outline: 2px solid $primary-color;
-      }
-
-      &__details {
-        &__link {
-          text-decoration: none;
-          color: $primary-color;
-          font-weight: bold;
-        }
-      }
-
-      &__actions {
-        display: flex;
-
-        &__button {
-          margin-left: $margin-small;
-          padding: $padding-small;
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-        }
-
-        &__edit {
-          color: $secondary-color;
-        }
-
-        &__delete {
-          color: $error-color;
-        }
+    &__details {
+      &__link {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: bold;
       }
     }
 
-    &__add {
-      padding: $padding-medium;
-      border-radius: 4px;
-      border: 1px dashed rgba(0, 0, 0, 0.1);
+    &__actions {
       display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: background-color 0.3s;
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+      &__button {
+        margin-left: $margin-small;
+        padding: $padding-small;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
       }
 
+      &__edit {
+        color: $secondary-color;
+      }
+
+      &__delete {
+        color: $error-color;
+      }
+    }
+  }
+
+  &__add {
+    padding: $padding-medium;
+    border-radius: 4px;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &__link {
       &__icon {
-        font-size: 24px;
         margin-right: $margin-small;
       }
     }
   }
 }
+

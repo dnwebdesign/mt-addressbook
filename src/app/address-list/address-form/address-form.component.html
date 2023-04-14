@@ -20,22 +20,34 @@
             <mat-form-field appearance="outline">
                 <mat-label>Straße</mat-label>
                 <input [formControl]="validation.streetControl" matInput>
+                <mat-error
+                        *ngIf="validation.streetControl.invalid && validation.streetControl.touched || submitted">
+                    Straße ist ein Pflichtfeld.
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Hausnummer</mat-label>
                 <input [formControl]="validation.streetNoControl" matInput>
+                <mat-error
+                        *ngIf="validation.streetNoControl.invalid && validation.streetNoControl.touched || submitted">
+                    Hausnummer ist ein Pflichtfeld.
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>PLZ</mat-label>
                 <input [formControl]="validation.zipControl" matInput>
                 <mat-error
                         *ngIf="validation.zipControl.invalid && validation.zipControl.touched || submitted">
-                    Nur Nummern zugelassen.
+                    Pflichtfeld. Nur Nummern zugelassen.
                 </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Ort</mat-label>
                 <input [formControl]="validation.locationControl" matInput>
+                <mat-error
+                        *ngIf="validation.locationControl.invalid && validation.locationControl.touched || submitted">
+                    Ort ist ein Pflichtfeld.
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Telefon</mat-label>

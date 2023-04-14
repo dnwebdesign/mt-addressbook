@@ -5,10 +5,10 @@ export class AddressFormValidation {
     nameControl = new FormControl('', Validators.required);
     phoneControl = new FormControl('');
     mailControl = new FormControl('', Validators.email);
-    streetControl = new FormControl('');
-    streetNoControl = new FormControl('');
-    zipControl = new FormControl('', Validators.pattern('[0-9]*'));
-    locationControl = new FormControl('');
+    streetControl = new FormControl('', Validators.required);
+    streetNoControl = new FormControl('', Validators.required);
+    zipControl = new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]);
+    locationControl = new FormControl('', Validators.required);
 
     constructor(initialAddress?: Address) {
         if (initialAddress) {

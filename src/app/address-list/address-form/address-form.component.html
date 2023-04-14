@@ -1,48 +1,61 @@
-<div class="container">
-    <button routerLink="/"><span class="material-icons">close</span></button>
-    <form (ngSubmit)="addAddress()" class="address-form">
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-name">Name:</label>
-            <input [(ngModel)]="newAddress.name" class="address-form__field__input" id="input-name" name="name"
-                   required type="text">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-phone">Telefon:</label>
-            <input [(ngModel)]="newAddress.phone" class="address-form__field__input" id="input-phone" name="phone"
-                   required type="text">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-mail">E-Mail:</label>
-            <input [(ngModel)]="newAddress.mail" class="address-form__field__input" id="input-mail" name="mail"
-                   required type="email">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-street">Straße:</label>
-            <input [(ngModel)]="newAddress.street" class="address-form__field__input" id="input-street"
-                   name="street"
-                   required type="text">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-streetNo">Hausnummer:</label>
-            <input [(ngModel)]="newAddress.streetNo" class="address-form__field__input" id="input-streetNo"
-                   name="streetNo"
-                   required type="text">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-zip">PLZ:</label>
-            <input [(ngModel)]="newAddress.zip" class="address-form__field__input" id="input-zip" name="zip"
-                   required type="text">
-        </div>
-        <div class="address-form__field">
-            <label class="address-form__field__label" for="input-location">Ort:</label>
-            <input [(ngModel)]="newAddress.location" class="address-form__field__input" id="input-location"
-                   name="location"
-                   required type="text">
-        </div>
-        <div class="address-form__actions">
-            <button class="address-form__actions__button address-form__actions__submit"
-                    type="submit">Adresse hinzufügen
-            </button>
-        </div>
-    </form>
+<div class="actions-top">
+    <button color="primary" mat-fab routerLink="/">
+        <mat-icon>close</mat-icon>
+    </button>
 </div>
+<mat-card>
+    <form (ngSubmit)="addAddress()" [formGroup]="addressForm">
+        <mat-card-header>
+            <h1>Neue Adresse hinzufügen</h1>
+        </mat-card-header>
+        <mat-card-content class="input-grid">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" matInput>
+                <mat-error
+                        *ngIf="addressForm.controls['name'].invalid && addressForm.controls['name'].touched || submitted">
+                    Name ist ein Pflichtfeld.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Straße</mat-label>
+                <input formControlName="street" matInput name="street">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Hausnummer</mat-label>
+                <input formControlName="streetNo" matInput name="streetNo">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PLZ</mat-label>
+                <input formControlName="zip" matInput name="zip">
+                <mat-error
+                        *ngIf="addressForm.controls['zip'].invalid && addressForm.controls['zip'].touched || submitted">
+                    Nur Nummern zugelassen.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Ort</mat-label>
+                <input formControlName="location" matInput name="location">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Telefon</mat-label>
+                <input formControlName="phone" matInput name="phone">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>E-Mail</mat-label>
+                <input formControlName="mail" matInput name="mail">
+                <mat-error
+                        *ngIf="addressForm.controls['mail'].invalid && addressForm.controls['mail'].touched || submitted">
+                    Dies ist keine valide E-Mail-Adresse.
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button color="primary" mat-flat-button type="submit">
+                <mat-icon>save</mat-icon>
+                Adresse speichern
+            </button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+

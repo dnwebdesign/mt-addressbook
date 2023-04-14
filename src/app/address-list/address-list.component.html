@@ -1,28 +1,21 @@
-<div class="container">
-    <div class="address-list">
-        <ul>
-            <li (click)="onSelectAddress(address.id)" *ngFor="let address of addresses" class="address-list__item"
-                tabindex="0">
-                <div class="address-list__item__details">
-                    <span class="address-list__item__details__link">{{ address.name }}</span>
-                </div>
-                <div class="address-list__item__actions">
-                    <button (click)="onEditAddress(address)"
-                            class="address-list__item__actions__button address-list__item__actions__edit">
-                        <span class="material-icons">edit</span>
-                    </button>
-                    <button (click)="onDeleteAddress(address)"
-                            class="address-list__item__actions__button address-list__item__actions__delete">
-                        <span class="material-icons">delete_forever</span>
-                    </button>
-                </div>
-            </li>
-            <li class="address-list__add">
-                <a class="address-list__add_link" routerLink="/address-form">
-                    <span class="address-list__add__link__icon material-icons">add</span>
-                    <span class="address-list__add__link__text">Neue Adresse hinzufügen</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
+<h1 class="align-with-icon">
+    <mat-icon color="primary">group</mat-icon>
+    Kontakte
+</h1>
+<mat-list>
+    <mat-list-item (click)="onSelectAddress(address.id)" *ngFor="let address of addresses" tabindex="0">
+        <span matListItemTitle>{{ address.name }}</span>
+        <div matListItemMeta>
+            <button (click)="onEditAddress(address)" color="accent" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="onDeleteAddress(address)" color="warn" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-list-item>
+    <button color="primary" mat-flat-button routerLink="/address-form">
+        <mat-icon>add</mat-icon>
+        Neue Adresse hinzufügen
+    </button>
+</mat-list>

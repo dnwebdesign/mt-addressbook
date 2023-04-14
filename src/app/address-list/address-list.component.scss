@@ -1,74 +1,16 @@
-@import '../styles/variables';
+mat-list-item {
+  border-radius: 4px;
+  background: #fff;
+  margin-bottom: 10px;
 
-.address-list {
-  list-style: none;
-  padding: 0;
-
-  &__item {
-    padding: $padding-medium;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    margin-bottom: $margin-small;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $card-color;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:focus-within {
-      outline: 2px solid $primary-color;
-    }
-
-    &__details {
-      &__link {
-        text-decoration: none;
-        color: $primary-color;
-        font-weight: bold;
-      }
-    }
-
-    &__actions {
-      display: flex;
-
-      &__button {
-        margin-left: $margin-small;
-        padding: $padding-small;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-      }
-
-      &__edit {
-        color: $secondary-color;
-      }
-
-      &__delete {
-        color: $error-color;
-      }
-    }
+  &:hover {
+    cursor: pointer;
   }
 
-  &__add {
-    padding: $padding-medium;
-    border-radius: 4px;
-    border: 1px dashed rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    &__link {
-      &__icon {
-        margin-right: $margin-small;
-      }
-    }
+  &:focus,
+  &:focus-within,
+  &:focus-visible {
+    outline: 2px solid #673ab7;
+    --mdc-list-list-item-focus-state-layer-color: #fff;
   }
 }
-

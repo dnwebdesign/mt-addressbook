@@ -1,0 +1,80 @@
+@import 'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+body {
+  background: #ccc;
+}
+
+a {
+  color: #673ab7;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 600px;
+  margin: 100px auto auto;
+}
+
+
+.align-with-icon {
+  display: flex;
+  align-items: center;
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+}
+
+.actions-top {
+  margin-bottom: 10px;
+}
+
+
+mat-card {
+  mat-card-header {
+    h1 {
+      width: 100%;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  mat-card-content {
+    &.input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+
+      :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  mat-card-actions {
+    button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+mat-snack-bar-container {
+  &.success-snackbar {
+    .mdc-snackbar__surface {
+      background-color: green;
+      color: #000;
+    }
+  }
+
+  &.error-snackbar {
+    .mdc-snackbar__surface {
+      background-color: #f44336;
+      color: #000;
+    }
+  }
+}

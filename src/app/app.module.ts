@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -9,6 +9,11 @@ import {AddressFormComponent} from './address-list/address-form/address-form.com
 import {AddressDetailsComponent} from './address-list/address-details/address-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -22,7 +27,13 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         AppRoutingModule,
         FormsModule,
         MatSnackBarModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

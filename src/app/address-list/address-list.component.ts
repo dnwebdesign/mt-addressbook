@@ -27,8 +27,10 @@ export class AddressListComponent implements OnInit {
         this.router.navigate(['/address-details', address.id], {queryParams: {editing: true}});
     }
 
-    onDeleteAddress(id: number): void {
-        this.addressService.deleteAddress(id);
-        this.addresses = this.addressService.getAddresses();
+    onDeleteAddress(address: Address): void {
+        if (this.addressService.confirmDeletion(address.name)) {
+            this.addressService.deleteAddress(address.id);
+            this.addresses = this.addressService.getAddresses();
+        }
     }
 }

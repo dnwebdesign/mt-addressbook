@@ -35,7 +35,7 @@ export class AddressDetailsComponent implements OnInit {
     }
 
     onDeleteAddress(): void {
-        if (this.address) {
+        if (this.address && this.addressService.confirmDeletion(this.address.name)) {
             this.addressService.deleteAddress(this.address.id);
             this.router.navigate(['/']);
         }

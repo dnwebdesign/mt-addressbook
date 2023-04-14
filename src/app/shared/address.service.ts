@@ -33,4 +33,8 @@ export class AddressService {
     generateAddressId(): number {
         return Math.max(...this.addresses.map(address => address.id)) + 1;
     }
+
+    confirmDeletion(addressName: string): boolean {
+        return window.confirm("Möchten Sie den Adresseintrag von " + addressName + " wirklich löschen?");
+    }
 }

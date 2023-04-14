@@ -4,48 +4,48 @@
     </button>
 </div>
 <mat-card>
-    <form (ngSubmit)="addAddress()" [formGroup]="addressForm">
+    <form (ngSubmit)="addAddress()">
         <mat-card-header>
             <h1>Neue Adresse hinzufügen</h1>
         </mat-card-header>
         <mat-card-content class="input-grid">
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input formControlName="name" matInput>
+                <input [formControl]="validation.nameControl" matInput>
                 <mat-error
-                        *ngIf="addressForm.controls['name'].invalid && addressForm.controls['name'].touched || submitted">
+                        *ngIf="validation.nameControl.invalid && validation.nameControl.touched || submitted">
                     Name ist ein Pflichtfeld.
                 </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Straße</mat-label>
-                <input formControlName="street" matInput name="street">
+                <input [formControl]="validation.streetControl" matInput>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Hausnummer</mat-label>
-                <input formControlName="streetNo" matInput name="streetNo">
+                <input [formControl]="validation.streetNoControl" matInput>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>PLZ</mat-label>
-                <input formControlName="zip" matInput name="zip">
+                <input [formControl]="validation.zipControl" matInput>
                 <mat-error
-                        *ngIf="addressForm.controls['zip'].invalid && addressForm.controls['zip'].touched || submitted">
+                        *ngIf="validation.zipControl.invalid && validation.zipControl.touched || submitted">
                     Nur Nummern zugelassen.
                 </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Ort</mat-label>
-                <input formControlName="location" matInput name="location">
+                <input [formControl]="validation.locationControl" matInput>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Telefon</mat-label>
-                <input formControlName="phone" matInput name="phone">
+                <input [formControl]="validation.phoneControl" matInput>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>E-Mail</mat-label>
-                <input formControlName="mail" matInput name="mail">
+                <input [formControl]="validation.mailControl" matInput>
                 <mat-error
-                        *ngIf="addressForm.controls['mail'].invalid && addressForm.controls['mail'].touched || submitted">
+                        *ngIf="validation.mailControl.invalid && validation.mailControl.touched || submitted">
                     Dies ist keine valide E-Mail-Adresse.
                 </mat-error>
             </mat-form-field>

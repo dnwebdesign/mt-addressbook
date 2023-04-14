@@ -3,7 +3,8 @@ import {Address} from "../../shared/address.model";
 import {AddressService} from "../../shared/address.service";
 import {AddressInput} from "../../shared/address-input";
 import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AddressFormValidation} from '../../shared/address-form-validation';
+
 
 @Component({
     selector: 'mt-address-form',
@@ -13,37 +14,30 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class AddressFormComponent {
     newAddress: AddressInput = this.createEmptyAddressInput();
     @Output() closeAddressForm = new EventEmitter<void>();
-    addressForm: FormGroup;
     submitted = false;
+    validation: AddressFormValidation;
 
     constructor(private addressService: AddressService, private router: Router) {
-        this.addressForm = new FormGroup({
-            name: new FormControl('', Validators.required),
-            phone: new FormControl(''),
-            mail: new FormControl('', Validators.email),
-            street: new FormControl(''),
-            streetNo: new FormControl(''),
-            zip: new FormControl('', Validators.pattern("^[0-9]*")),
-            location: new FormControl('')
-        });
+        this.validation = new AddressFormValidation();
     }
 
     addAddress(): void {
         this.submitted = true;
-        if (this.addressForm.valid) {
+        if (this.validation.isValid() && this.newAddress) {
             const id = this.addressService.generateAddressId();
-            this.addressService.addAddress(new Address(
+            const address = new Address(
                 id,
-                this.addressForm.controls['name'].value,
-                this.addressForm.controls['phone'].value,
-                this.addressForm.controls['mail'].value,
-                this.addressForm.controls['street'].value,
-                this.addressForm.controls['streetNo'].value,
-                this.addressForm.controls['zip'].value,
-                this.addressForm.controls['location'].value,
-            ));
+                <string>this.validation.nameControl.value,
+                <string>this.validation.phoneControl.value,
+                <string>this.validation.mailControl.value,
+                <string>this.validation.streetControl.value,
+                <string>this.validation.streetNoControl.value,
+                <string>this.validation.zipControl.value,
+                <string>this.validation.locationControl.value,
+            )
+            this.addressService.addAddress(address);
+            this.validation.setInitialValues(address);
             this.newAddress = this.createEmptyAddressInput();
-            this.addressForm.reset();
             this.router.navigate(['/']);
         }
     }

@@ -3,7 +3,7 @@ import {Address} from '../../shared/address.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AddressService} from "../../shared/address.service";
 import {CanComponentDeactivate} from "../../can-deactive.guard";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AddressFormValidation} from "../../shared/address-form-validation";
 
 @Component({
     selector: 'mt-address-details',
@@ -14,19 +14,11 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     @Input() address: Address | null = null;
     editing = false;
     changesSaved = false;
-    addressForm: FormGroup;
     submitted = false;
+    validation: AddressFormValidation;
 
     constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
-        this.addressForm = new FormGroup({
-            name: new FormControl('', Validators.required),
-            phone: new FormControl(''),
-            mail: new FormControl('', Validators.email),
-            street: new FormControl(''),
-            streetNo: new FormControl(''),
-            zip: new FormControl('', Validators.pattern("^[0-9]*")),
-            location: new FormControl('')
-        });
+        this.validation = new AddressFormValidation();
     }
 
     ngOnInit(): void {
@@ -52,29 +44,23 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
 
     onEditAddress(): void {
         if (this.address) {
-            this.addressForm.controls['name'].setValue(this.address.name);
-            this.addressForm.controls['phone'].setValue(this.address.phone);
-            this.addressForm.controls['mail'].setValue(this.address.mail);
-            this.addressForm.controls['street'].setValue(this.address.street);
-            this.addressForm.controls['streetNo'].setValue(this.address.streetNo);
-            this.addressForm.controls['zip'].setValue(this.address.zip);
-            this.addressForm.controls['location'].setValue(this.address.location);
+            this.validation = new AddressFormValidation(this.address);
             this.editing = true;
         }
     }
 
     onSaveAddress(): void {
         this.submitted = true;
-        if (this.addressForm.valid && this.address) {
+        if (this.validation.isValid() && this.address) {
             this.address = {
                 id: this.address.id,
-                name: this.addressForm.controls['name'].value,
-                phone: this.addressForm.controls['phone'].value,
-                mail: this.addressForm.controls['mail'].value,
-                street: this.addressForm.controls['street'].value,
-                streetNo: this.addressForm.controls['streetNo'].value,
-                zip: this.addressForm.controls['zip'].value,
-                location: this.addressForm.controls['location'].value
+                name: <string>this.validation.nameControl.value,
+                phone: <string>this.validation.phoneControl.value,
+                mail: <string>this.validation.mailControl.value,
+                street: <string>this.validation.streetControl.value,
+                streetNo: <string>this.validation.streetNoControl.value,
+                zip: <string>this.validation.zipControl.value,
+                location: <string>this.validation.locationControl.value,
             };
             this.addressService.updateAddress(this.address);
             this.editing = false;

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="address-list">
         <ul>
-            <li (click)="selectAddress(address.id)" *ngFor="let address of addresses" class="address-list__item"
+            <li (click)="onSelectAddress(address.id)" *ngFor="let address of addresses" class="address-list__item"
                 tabindex="0">
                 <div class="address-list__item__details">
                     <span class="address-list__item__details__link">{{ address.name }}</span>

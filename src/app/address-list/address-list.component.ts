@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
-import {AddressInput} from "../shared/address-input";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,10 +10,7 @@ import {Router} from "@angular/router";
 })
 export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
-    newAddress: AddressInput = this.createEmptyAddressInput();
-    showAddressForm = false;
     @Output() addressAdded = new EventEmitter<void>();
-    selectedAddress: Address | null = null;
 
     constructor(private addressService: AddressService, private router: Router) {
     }
@@ -23,7 +19,7 @@ export class AddressListComponent implements OnInit {
         this.addresses = this.addressService.getAddresses();
     }
 
-    selectAddress(id: number): void {
+    onSelectAddress(id: number): void {
         this.router.navigate(['/address-details', id]);
     }
 
@@ -34,21 +30,5 @@ export class AddressListComponent implements OnInit {
     onDeleteAddress(id: number): void {
         this.addressService.deleteAddress(id);
         this.addresses = this.addressService.getAddresses();
-    }
-
-    toggleAddressForm() {
-        this.showAddressForm = !this.showAddressForm;
-    }
-
-    private createEmptyAddressInput(): AddressInput {
-        return {
-            name: '',
-            phone: '',
-            mail: '',
-            street: '',
-            streetNo: '',
-            zip: '',
-            location: ''
-        };
     }
 }

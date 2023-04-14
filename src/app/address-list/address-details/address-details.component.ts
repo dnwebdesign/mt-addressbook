@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Address} from '../../shared/address.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AddressService} from "../../shared/address.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class AddressDetailsComponent implements OnInit {
     @Input() address: Address | null = null;
     editing = false;
 
-    constructor(private addressService: AddressService, private route: ActivatedRoute) {
+    constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -26,14 +26,19 @@ export class AddressDetailsComponent implements OnInit {
         });
     }
 
-    editAddress(): void {
+    onEditAddress(): void {
         this.editing = true;
     }
 
-    saveAddress(): void {
-
-
+    onSaveAddress(): void {
         this.editing = false;
+    }
+
+    onDeleteAddress(): void {
+        if (this.address) {
+            this.addressService.deleteAddress(this.address.id);
+            this.router.navigate(['/']);
+        }
     }
 
 }

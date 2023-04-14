@@ -23,7 +23,6 @@ export class AddressService {
     }
 
     addAddress(address: Address): void {
-        address.id = this.generateAddressId();
         this.addresses.push(address);
     }
 

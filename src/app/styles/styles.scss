@@ -15,3 +15,26 @@ body {
   max-width: 800px;
   margin: auto;
 }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.success-snackbar.mat-mdc-snack-bar-container {
+  .mdc-snackbar__surface {
+    background-color: #4caf50;
+    color: white;
+  }
+}
+
+.error-snackbar.mat-mdc-snack-bar-container {
+  .mdc-snackbar__surface {
+    background-color: #f44336;
+    color: white;
+  }
+}

@@ -7,6 +7,8 @@ import {AppComponent} from './app.component';
 import {AddressListComponent} from './address-list/address-list.component';
 import {AddressFormComponent} from './address-list/address-form/address-form.component';
 import {AddressDetailsComponent} from './address-list/address-details/address-details.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import {AddressDetailsComponent} from './address-list/address-details/address-de
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        MatSnackBarModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

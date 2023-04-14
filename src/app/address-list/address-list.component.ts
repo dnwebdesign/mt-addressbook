@@ -29,7 +29,7 @@ export class AddressListComponent implements OnInit {
 
     onDeleteAddress(address: Address): void {
         if (this.addressService.confirmDeletion(address.name)) {
-            this.addressService.deleteAddress(address.id);
+            this.addressService.deleteAddress(address);
             this.addresses = this.addressService.getAddresses();
         }
     }

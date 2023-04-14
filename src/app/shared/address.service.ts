@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Address} from './address.model';
+import {SnackbarService} from "./snackbar.service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,9 @@ export class AddressService {
         new Address(5, 'Martin Weber', '089-2468101', 'martin.weber@example.com', 'Leopoldstraße', '45', '80802', 'München')
     ];
 
+    constructor(private snackbarService: SnackbarService) {
+    }
+
     getAddresses(): Address[] {
         return this.addresses;
     }
@@ -24,10 +28,16 @@ export class AddressService {
 
     addAddress(address: Address): void {
         this.addresses.push(address);
+        this.snackbarService.showSuccess('Adressbucheintrag für ' + address.name + ' hinzugefügt.');
     }
 
-    deleteAddress(id: number): void {
-        this.addresses = this.addresses.filter(addresses => addresses.id !== id);
+    deleteAddress(address: Address): void {
+        try {
+            this.addresses = this.addresses.filter(addresses => addresses.id !== address.id);
+            this.snackbarService.showSuccess('Adressbucheintrag für ' + address.name + ' gelöscht.');
+        } catch (error) {
+            this.snackbarService.showError('Fehler beim Löschen der Adresse. Bitte versuchen Sie es erneut.');
+        }
     }
 
     generateAddressId(): number {
@@ -35,6 +45,6 @@ export class AddressService {
     }
 
     confirmDeletion(addressName: string): boolean {
-        return window.confirm("Möchten Sie den Adresseintrag von " + addressName + " wirklich löschen?");
+        return window.confirm("Möchten Sie den Adressbucheintrag für " + addressName + " wirklich löschen?");
     }
 }

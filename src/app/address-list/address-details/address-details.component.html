@@ -1,28 +1,32 @@
 <div class="container">
     <div *ngIf="address" class="address-details card">
-        <button routerLink="/"><span class="material-icons">close</span></button>
+        <button (click)="onClose()">
+            <span *ngIf="!editing" class="material-icons">arrow_back</span>
+            <span *ngIf="editing" class="material-icons">close</span>
+        </button>
         <ng-container *ngIf="!editing">
             <h3>{{ address.name }}</h3>
             <p>{{ address.street }} {{ address.streetNo }}</p>
             <p>{{ address.zip }} {{ address.location }}</p>
             <p>{{ address.phone }}</p>
             <p>{{ address.mail }}</p>
-            <button (click)="onEditAddress()" class="address-details__edit">Bearbeiten</button>
+            <button (click)="onEditAddress()" class="address-details__button address-details__button--edit">Bearbeiten
+            </button>
+            <button (click)="onDeleteAddress()"
+                    class="address-details__button address-details__button--delete">
+                <span class="material-icons">delete_forever</span>
+                Adresse löschen
+            </button>
         </ng-container>
-        <ng-container *ngIf="editing">
-            <input [(ngModel)]="address.name" placeholder="Name"/>
-            <input [(ngModel)]="address.street" placeholder="Straße"/>
-            <input [(ngModel)]="address.streetNo" placeholder="Hausnummer"/>
-            <input [(ngModel)]="address.zip" placeholder="PLZ"/>
-            <input [(ngModel)]="address.location" placeholder="Ort"/>
-            <input [(ngModel)]="address.phone" placeholder="Telefon"/>
-            <input [(ngModel)]="address.mail" placeholder="E-Mail"/>
+        <ng-container *ngIf="editing && newAddress">
+            <input [(ngModel)]="newAddress.name" placeholder="Name"/>
+            <input [(ngModel)]="newAddress.street" placeholder="Straße"/>
+            <input [(ngModel)]="newAddress.streetNo" placeholder="Hausnummer"/>
+            <input [(ngModel)]="newAddress.zip" placeholder="PLZ"/>
+            <input [(ngModel)]="newAddress.location" placeholder="Ort"/>
+            <input [(ngModel)]="newAddress.phone" placeholder="Telefon"/>
+            <input [(ngModel)]="newAddress.mail" placeholder="E-Mail"/>
             <button (click)="onSaveAddress()" class="address-details__save">Speichern</button>
         </ng-container>
-        <button (click)="onDeleteAddress()" *ngIf="!editing"
-                class="address-details__button address-details__button--delete">
-            <span class="material-icons">delete_forever</span>
-            Adresse löschen
-        </button>
     </div>
 </div>

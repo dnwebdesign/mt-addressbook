@@ -11,6 +11,7 @@ import {CanComponentDeactivate} from "../../can-deactive.guard";
 })
 export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     @Input() address: Address | null = null;
+    newAddress: Address | null = null;
     editing = false;
     changesSaved = false;
 
@@ -25,6 +26,9 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
 
         this.route.queryParams.subscribe(queryParams => {
             this.editing = queryParams['editing'] === 'true';
+            if (this.editing === true) {
+                this.onEditAddress();
+            }
         });
     }
 
@@ -36,17 +40,34 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     }
 
     onEditAddress(): void {
-        this.editing = true;
+        if (this.address) {
+            this.newAddress = {...this.address};
+            this.editing = true;
+        }
     }
 
     onSaveAddress(): void {
-        this.editing = false;
+        if (this.newAddress) {
+            this.address = this.newAddress;
+            this.addressService.updateAddress(this.address);
+            this.editing = false;
+            this.newAddress = null;
+        }
     }
 
     onDeleteAddress(): void {
         if (this.address && this.addressService.confirmDeletion(this.address.name)) {
             this.addressService.deleteAddress(this.address);
             this.router.navigate(['/']);
+        }
+    }
+
+    onClose(): void {
+        if (!this.editing) {
+            this.router.navigate(['/']);
+        } else {
+            this.editing = false;
+            this.newAddress = null;
         }
     }
 

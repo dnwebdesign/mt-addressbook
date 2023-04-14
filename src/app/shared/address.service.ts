@@ -31,6 +31,14 @@ export class AddressService {
         this.snackbarService.showSuccess('Adressbucheintrag für ' + address.name + ' hinzugefügt.');
     }
 
+    updateAddress(updatedAddress: Address): void {
+        const index = this.addresses.findIndex(address => address.id === updatedAddress.id);
+        if (index !== -1) {
+            this.addresses[index] = updatedAddress;
+            this.snackbarService.showSuccess('Adressbucheintrag für ' + updatedAddress.name + ' aktualisiert.');
+        }
+    }
+
     deleteAddress(address: Address): void {
         try {
             this.addresses = this.addresses.filter(addresses => addresses.id !== address.id);

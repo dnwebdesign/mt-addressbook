@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.address-details {
+  padding: $padding-medium;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: $card-color;
+  border-radius: 4px;
+  margin-top: $margin-medium;
+  margin-bottom: $margin-medium;
+}

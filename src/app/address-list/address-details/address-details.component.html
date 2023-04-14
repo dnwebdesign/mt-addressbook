@@ -19,7 +19,8 @@
             <input [(ngModel)]="address.mail" placeholder="E-Mail"/>
             <button (click)="onSaveAddress()" class="address-details__save">Speichern</button>
         </ng-container>
-        <button (click)="onDeleteAddress()" class="address-details__button address-details__button--delete">
+        <button (click)="onDeleteAddress()" *ngIf="!editing"
+                class="address-details__button address-details__button--delete">
             <span class="material-icons">delete_forever</span>
             Adresse löschen
         </button>

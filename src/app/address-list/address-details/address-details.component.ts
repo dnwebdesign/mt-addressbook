@@ -2,15 +2,17 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Address} from '../../shared/address.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AddressService} from "../../shared/address.service";
+import {CanComponentDeactivate} from "../../can-deactive.guard";
 
 @Component({
     selector: 'mt-address-details',
     templateUrl: './address-details.component.html',
     styleUrls: ['./address-details.component.scss']
 })
-export class AddressDetailsComponent implements OnInit {
+export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     @Input() address: Address | null = null;
     editing = false;
+    changesSaved = false;
 
     constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
     }
@@ -24,6 +26,13 @@ export class AddressDetailsComponent implements OnInit {
         this.route.queryParams.subscribe(queryParams => {
             this.editing = queryParams['editing'] === 'true';
         });
+    }
+
+    canDeactivate(): boolean {
+        if (this.editing && !this.changesSaved) {
+            return confirm('Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten?');
+        }
+        return true;
     }
 
     onEditAddress(): void {

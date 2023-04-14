@@ -23,17 +23,17 @@ export class AddressListComponent implements OnInit {
         this.addresses = this.addressService.getAddresses();
     }
 
+    selectAddress(id: number): void {
+        this.router.navigate(['/address-details', id]);
+    }
+
     onEditAddress(address: Address): void {
-        console.log("address editing of address with id " + address.id + " goes here.");
+        this.router.navigate(['/address-details', address.id], {queryParams: {editing: true}});
     }
 
     onDeleteAddress(id: number): void {
         this.addressService.deleteAddress(id);
         this.addresses = this.addressService.getAddresses();
-    }
-
-    selectAddress(id: number): void {
-        this.router.navigate(['/address-details', id]);
     }
 
     toggleAddressForm() {

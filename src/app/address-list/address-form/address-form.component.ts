@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {Address} from "../../shared/address.model";
 import {AddressService} from "../../shared/address.service";
 import {AddressInput} from "../../shared/address-input";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'mt-address-form',
@@ -12,7 +13,7 @@ export class AddressFormComponent {
     newAddress: AddressInput = this.createEmptyAddressInput();
     @Output() closeAddressForm = new EventEmitter<void>();
 
-    constructor(private addressService: AddressService) {
+    constructor(private addressService: AddressService, private router: Router) {
     }
 
     addAddress(): void {
@@ -28,11 +29,7 @@ export class AddressFormComponent {
             this.newAddress.location
         ));
         this.newAddress = this.createEmptyAddressInput();
-        this.onCloseForm();
-    }
-
-    onCloseForm() {
-        this.closeAddressForm.emit();
+        this.router.navigate(['/']);
     }
 
     private createEmptyAddressInput(): AddressInput {

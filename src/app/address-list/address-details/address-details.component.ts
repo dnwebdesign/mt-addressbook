@@ -8,8 +8,9 @@ import {AddressService} from "../../shared/address.service";
     templateUrl: './address-details.component.html',
     styleUrls: ['./address-details.component.scss']
 })
-export class AddressDetailsComponent {
+export class AddressDetailsComponent implements OnInit {
     @Input() address: Address | null = null;
+    editing = false;
 
     constructor(private addressService: AddressService, private route: ActivatedRoute) {
     }
@@ -19,6 +20,20 @@ export class AddressDetailsComponent {
             const id = +params['id'];
             this.address = this.addressService.getAddressById(id);
         });
+
+        this.route.queryParams.subscribe(queryParams => {
+            this.editing = queryParams['editing'] === 'true';
+        });
+    }
+
+    editAddress(): void {
+        this.editing = true;
+    }
+
+    saveAddress(): void {
+
+
+        this.editing = false;
     }
 
 }

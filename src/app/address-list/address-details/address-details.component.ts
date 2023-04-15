@@ -13,7 +13,6 @@ import {AddressFormValidation} from "../../shared/address-form-validation";
 export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     @Input() address: Address | null = null;
     editing = false;
-    changesSaved = false;
     submitted = false;
     validation: AddressFormValidation;
 
@@ -36,7 +35,7 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     }
 
     canDeactivate(): boolean {
-        if (this.editing && !this.changesSaved) {
+        if (this.editing) {
             return confirm('Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten?');
         }
         return true;
@@ -78,7 +77,7 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
         if (!this.editing) {
             this.router.navigate(['/']);
         } else {
-            if (!this.changesSaved && confirm('Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten?').valueOf()) {
+            if (confirm('Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten?').valueOf()) {
                 this.editing = false;
             } else {
                 this.editing = true;

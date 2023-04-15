@@ -12,6 +12,7 @@ import {LiveSearchService} from "../shared/live-search.service";
 export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
     @Output() addressAdded = new EventEmitter<void>();
+    highlightedSearchTerm = '';
 
     constructor(private addressService: AddressService, private router: Router, private liveSearchService: LiveSearchService) {
     }
@@ -40,6 +41,33 @@ export class AddressListComponent implements OnInit {
             return;
         }
         const searchTerm = (target as HTMLInputElement).value;
+        this.highlightedSearchTerm = searchTerm;
         this.addresses = this.liveSearchService.searchAddresses(this.addressService.getAddresses(), searchTerm);
+    }
+
+    getAddressValue(address: Address, key: string): any {
+        return (address as any)[key];
+    }
+
+    getHighlightedText(text: string, searchTerm: string): string | null {
+        if (!searchTerm) {
+            return null;
+        }
+
+        const startIndex = text.toLowerCase().indexOf(searchTerm.toLowerCase());
+        if (startIndex === -1) {
+            return null;
+        }
+
+        const endIndex = startIndex + searchTerm.length;
+        const highlightedText = text.substring(startIndex, endIndex);
+        return (
+            text.substring(0, startIndex) +
+            '<mark>' +
+            highlightedText +
+            '</mark>' +
+            text.substring(endIndex) +
+            ' '
+        );
     }
 }

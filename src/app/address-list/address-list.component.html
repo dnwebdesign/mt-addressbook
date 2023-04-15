@@ -28,6 +28,10 @@
                 <mat-icon>delete</mat-icon>
             </button>
         </div>
+        <span *ngFor="let addressField of ['name', 'street', 'location', 'mail', 'phone']">
+            <span [innerHTML]="getHighlightedText(getAddressValue(address, addressField), highlightedSearchTerm)"
+                  class="highlighted-element">|</span>
+        </span>
     </mat-list-item>
     <button class="button-new-address" color="primary" mat-flat-button
             routerLink="/address-form">

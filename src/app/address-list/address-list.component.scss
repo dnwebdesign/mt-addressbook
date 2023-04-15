@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 mat-list-item {
   border-radius: 4px;
   background: #fff;
@@ -48,4 +50,9 @@ mat-list-item {
 
 .button-new-address {
   margin-top: 10px;
+}
+
+::ng-deep mark {
+  background-color: $primary-color;
+  color: #fff;
 }

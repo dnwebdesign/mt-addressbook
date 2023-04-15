@@ -56,3 +56,7 @@ mat-list-item {
   background-color: $primary-color;
   color: #fff;
 }
+
+::ng-deep mt-address-list .mdc-list-item--with-trailing-meta.mdc-list-item--with-two-lines .mdc-list-item__end {
+  align-self: center;
+}

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Address} from "../shared/address.model";
 import {AddressService} from "../shared/address.service";
 import {Router} from "@angular/router";
+import {LiveSearchService} from "../shared/live-search.service";
 
 @Component({
     selector: 'mt-address-list',
@@ -12,7 +13,7 @@ export class AddressListComponent implements OnInit {
     addresses: Address[] = [];
     @Output() addressAdded = new EventEmitter<void>();
 
-    constructor(private addressService: AddressService, private router: Router) {
+    constructor(private addressService: AddressService, private router: Router, private liveSearchService: LiveSearchService) {
     }
 
     ngOnInit(): void {
@@ -32,5 +33,13 @@ export class AddressListComponent implements OnInit {
             this.addressService.deleteAddress(address);
             this.addresses = this.addressService.getAddresses();
         }
+    }
+
+    onSearch(target: EventTarget | null): void {
+        if (!target) {
+            return;
+        }
+        const searchTerm = (target as HTMLInputElement).value;
+        this.addresses = this.liveSearchService.searchAddresses(this.addressService.getAddresses(), searchTerm);
     }
 }

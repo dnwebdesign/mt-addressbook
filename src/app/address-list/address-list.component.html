@@ -1,7 +1,10 @@
-<h1 class="align-with-icon">
-    <mat-icon color="primary">group</mat-icon>
-    Kontakte
-</h1>
+<mat-form-field class="live-search">
+    <mat-label>Suche</mat-label>
+    <input (input)="onSearch($event.target)"
+           [attr.aria-label]="'Suche im Adressbuch'"
+           matInput matNativeControl="search">
+    <mat-icon color="primary" matIconPrefix>search</mat-icon>
+</mat-form-field>
 <mat-list>
     <mat-list-item (click)="onSelectAddress(address.id)" *ngFor="let address of addresses"
                    [attr.aria-label]="'Schaltfläche: Adressbucheintrag für '+address.name+' anzeigen'"
@@ -9,7 +12,7 @@
         <span matListItemTitle>{{ address.name }}</span>
         <div matListItemMeta>
             <button (click)="onEditAddress(address)"
-                    [attr.aria-label]="'Adressbucheintrag für '+address.name+' bearbeiten'"
+                    [attr.aria-label]="'Adresse '+address.name+' bearbeiten'"
                     color="accent"
                     mat-icon-button
                     matTooltip="Adresse bearbeiten"
@@ -17,7 +20,7 @@
                 <mat-icon>edit</mat-icon>
             </button>
             <button (click)="onDeleteAddress(address)"
-                    [attr.aria-label]="'Adressbucheintrag für '+address.name+' löschen'"
+                    [attr.aria-label]="'Adresse '+address.name+' löschen'"
                     color="warn"
                     mat-icon-button
                     matTooltip="Adresse löschen"

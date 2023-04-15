@@ -1,5 +1,7 @@
 body {
-  background: #ccc;
+  background: #ddd;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -7,9 +9,35 @@ a {
   text-decoration: none;
 }
 
+mt-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  color: #fff;
+  background: #673ab7;
+  padding: 50px 0;
+}
+
+.main {
+  padding: 50px 0;
+  width: 100%;
+}
+
+.footer {
+  padding: 50px 0;
+  background: #333;
+
+  .copyright {
+    color: darken(#fff, 20%);
+  }
+}
+
 .container {
   max-width: 600px;
-  margin: 100px auto auto;
+  margin: auto;
 }
 
 

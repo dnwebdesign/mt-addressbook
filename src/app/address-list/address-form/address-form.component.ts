@@ -36,7 +36,6 @@ export class AddressFormComponent {
                 <string>this.validation.locationControl.value,
             )
             this.addressService.addAddress(address);
-            this.validation.setInitialValues(address);
             this.newAddress = this.createEmptyAddressInput();
             this.router.navigate(['/']);
         }

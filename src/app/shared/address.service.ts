@@ -18,24 +18,42 @@ export class AddressService {
     }
 
     getAddresses(): Address[] {
-        return this.addresses;
+        try {
+            return this.addresses;
+        } catch (error) {
+            this.snackbarService.showError('Fehler beim Löschen der Adresse. Bitte versuchen Sie es erneut.');
+            return [];
+        }
     }
-
+    
     getAddressById(id: number): Address | null {
-        const address = this.addresses.find(adresse => adresse.id === id);
-        return address || null;
+        try {
+            const address = this.addresses.find(adresse => adresse.id === id);
+            return address || null;
+        } catch (error) {
+            this.snackbarService.showError('Fehler beim Löschen der Adresse. Bitte versuchen Sie es erneut.');
+            return null;
+        }
     }
 
     addAddress(address: Address): void {
-        this.addresses.push(address);
-        this.snackbarService.showSuccess('Adressbucheintrag für ' + address.name + ' hinzugefügt.');
+        try {
+            this.addresses.push(address);
+            this.snackbarService.showSuccess('Adressbucheintrag für ' + address.name + ' hinzugefügt.');
+        } catch (error) {
+            this.snackbarService.showError('Fehler beim Löschen der Adresse. Bitte versuchen Sie es erneut.');
+        }
     }
 
     updateAddress(updatedAddress: Address): void {
-        const index = this.addresses.findIndex(address => address.id === updatedAddress.id);
-        if (index !== -1) {
-            this.addresses[index] = updatedAddress;
-            this.snackbarService.showSuccess('Adressbucheintrag für ' + updatedAddress.name + ' aktualisiert.');
+        try {
+            const index = this.addresses.findIndex(address => address.id === updatedAddress.id);
+            if (index !== -1) {
+                this.addresses[index] = updatedAddress;
+                this.snackbarService.showSuccess('Adressbucheintrag für ' + updatedAddress.name + ' aktualisiert.');
+            }
+        } catch (error) {
+            this.snackbarService.showError('Fehler beim Löschen der Adresse. Bitte versuchen Sie es erneut.');
         }
     }
 

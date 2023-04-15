@@ -24,12 +24,12 @@
         </mat-card-header>
         <mat-card-content *ngIf="!editing">
             <h2><strong>{{ address.name }}</strong></h2>
-            <p class="align-with-icon align-with-icon--top">
+            <p *ngIf="address.location" class="align-with-icon align-with-icon--top">
                 <mat-icon color="primary">location_on</mat-icon>
                 {{ address.street }} {{ address.streetNo }}<br>
                 {{ address.zip }} {{ address.location }}
             </p>
-            <p class="align-with-icon">
+            <p *ngIf="address.phone" class="align-with-icon">
                 <mat-icon color="primary">phone</mat-icon>
                 <a [attr.aria-label]="address.name+' anrufen'"
                    href="tel:{{ address.phone }}"
@@ -37,7 +37,7 @@
                     {{ address.phone }}
                 </a>
             </p>
-            <p class="align-with-icon">
+            <p *ngIf="address.mail" class="align-with-icon">
                 <mat-icon color="primary">mail</mat-icon>
                 <a [attr.aria-label]="'E-Mail an ' +address.name+' schreiben'"
                    href="mailto:{{ address.mail }}"

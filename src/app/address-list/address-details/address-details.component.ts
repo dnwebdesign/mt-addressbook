@@ -14,10 +14,9 @@ export class AddressDetailsComponent implements OnInit, CanComponentDeactivate {
     @Input() address: Address | null = null;
     editing = false;
     submitted = false;
-    validation: AddressFormValidation;
+    validation: AddressFormValidation = new AddressFormValidation();
 
     constructor(private addressService: AddressService, private route: ActivatedRoute, private router: Router) {
-        this.validation = new AddressFormValidation();
     }
 
     ngOnInit(): void {

@@ -15,10 +15,9 @@ export class AddressFormComponent {
     newAddress: AddressInput = this.createEmptyAddressInput();
     @Output() closeAddressForm = new EventEmitter<void>();
     submitted = false;
-    validation: AddressFormValidation;
+    validation: AddressFormValidation = new AddressFormValidation();
 
     constructor(private addressService: AddressService, private router: Router) {
-        this.validation = new AddressFormValidation();
     }
 
     addAddress(): void {

@@ -46,7 +46,7 @@
                 </a>
             </p>
         </mat-card-content>
-        <mat-card-content *ngIf="editing" class="input-grid">
+        <mat-card-content *ngIf="editing" class="input-grid editing">
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
                 <input [formControl]="validation.nameControl" matInput>
@@ -111,7 +111,7 @@
             </button>
             <button (click)="onDeleteAddress()"
                     *ngIf="!editing"
-                    [attr.aria-label]="'Adressbucheintrag für ' + address.name + ' bearbeiten'"
+                    [attr.aria-label]="'Adressbucheintrag für ' + address.name + ' löschen'"
                     color="warn"
                     mat-flat-button>
                 <mat-icon>delete_forever</mat-icon>

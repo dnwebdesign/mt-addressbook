@@ -1,3 +1,9 @@
 .address-name {
   font-weight: bold;
 }
+
+mat-card-content {
+  &.editing {
+    margin-top: 20px;
+  }
+}

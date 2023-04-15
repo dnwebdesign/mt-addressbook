@@ -1,0 +1,12 @@
+.align-with-icon {
+  display: flex;
+  align-items: center;
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,34 @@
+@import "variables";
+@import "mixins";
+@import "typography";
+@import "header";
+@import "content";
+@import "footer";
+@import "helpers";
+@import "material-mods";
+
+body {
+  background: #ddd;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+mt-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+
+  .container {
+    max-width: 600px;
+    margin: auto;
+
+    @include medium-screen {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+

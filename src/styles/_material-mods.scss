@@ -1,63 +1,4 @@
-body {
-  background: #ddd;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  color: #673ab7;
-  text-decoration: none;
-}
-
-mt-root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.header {
-  color: #fff;
-  background: #673ab7;
-  padding: 50px 0;
-}
-
-.main {
-  padding: 50px 0;
-  width: 100%;
-}
-
-.footer {
-  padding: 50px 0;
-  background: #333;
-
-  .copyright {
-    color: darken(#fff, 20%);
-  }
-}
-
-.container {
-  max-width: 600px;
-  margin: auto;
-}
-
-
-.align-with-icon {
-  display: flex;
-  align-items: center;
-
-  &--top {
-    align-items: flex-start;
-  }
-
-  mat-icon {
-    margin-right: 10px;
-  }
-}
-
-.actions-top {
-  margin-bottom: 20px;
-}
-
+@import "mixins";
 
 mat-card {
   mat-card-header {
@@ -69,6 +10,8 @@ mat-card {
   }
 
   mat-card-content {
+    box-sizing: border-box;
+
     &.input-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -76,6 +19,14 @@ mat-card {
 
       :first-child {
         grid-column: 1 / -1;
+      }
+
+      @include small-screen {
+        display: block;
+        width: 100%;
+        mat-form-field {
+          width: 100%;
+        }
       }
     }
   }

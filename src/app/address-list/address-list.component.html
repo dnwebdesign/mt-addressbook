@@ -3,18 +3,31 @@
     Kontakte
 </h1>
 <mat-list>
-    <mat-list-item (click)="onSelectAddress(address.id)" *ngFor="let address of addresses" tabindex="0">
+    <mat-list-item (click)="onSelectAddress(address.id)" *ngFor="let address of addresses"
+                   [attr.aria-label]="'Schaltfläche: Adressbucheintrag für '+address.name+' anzeigen'"
+                   matTooltip="Adresse anzeigen" tabindex="0">
         <span matListItemTitle>{{ address.name }}</span>
         <div matListItemMeta>
-            <button (click)="onEditAddress(address)" color="accent" mat-icon-button>
+            <button (click)="onEditAddress(address)"
+                    [attr.aria-label]="'Adressbucheintrag für '+address.name+' bearbeiten'"
+                    color="accent"
+                    mat-icon-button
+                    matTooltip="Adresse bearbeiten"
+            >
                 <mat-icon>edit</mat-icon>
             </button>
-            <button (click)="onDeleteAddress(address)" color="warn" mat-icon-button>
+            <button (click)="onDeleteAddress(address)"
+                    [attr.aria-label]="'Adressbucheintrag für '+address.name+' löschen'"
+                    color="warn"
+                    mat-icon-button
+                    matTooltip="Adresse löschen"
+            >
                 <mat-icon>delete</mat-icon>
             </button>
         </div>
     </mat-list-item>
-    <button color="primary" mat-flat-button routerLink="/address-form">
+    <button color="primary" mat-flat-button
+            routerLink="/address-form">
         <mat-icon>add</mat-icon>
         Neue Adresse hinzufügen
     </button>

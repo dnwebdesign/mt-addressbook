@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import {MatInputModule} from "@angular/material/input";
         MatListModule,
         MatCardModule,
         MatInputModule,
+        MatTooltipModule,
         ReactiveFormsModule,
     ],
     providers: [],

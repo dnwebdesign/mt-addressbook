@@ -63,7 +63,11 @@
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button color="primary" mat-flat-button type="submit">
+            <button
+                    [attr.aria-label]="'Neue Adresse speichern'"
+                    color="primary"
+                    mat-flat-button
+                    type="submit">
                 <mat-icon>save</mat-icon>
                 Adresse speichern
             </button>

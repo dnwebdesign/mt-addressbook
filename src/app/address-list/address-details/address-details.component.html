@@ -1,7 +1,19 @@
 <div class="actions-top">
-    <button (click)="onClose()" color="primary" mat-fab>
-        <mat-icon *ngIf="!editing">arrow_back</mat-icon>
-        <mat-icon *ngIf="editing">close</mat-icon>
+    <button (click)="onClose()"
+            *ngIf="!editing"
+            [attr.aria-label]="'Zurück zur Adressliste'"
+            color="primary"
+            mat-fab
+            matTooltip="Zurück zur Adressliste">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button (click)="onClose()"
+            *ngIf="editing"
+            [attr.aria-label]="'Bearbeitung abbrechen'"
+            color="primary"
+            mat-fab
+            matTooltip="Bearbeitung abbrechen">
+        <mat-icon>close</mat-icon>
     </button>
 </div>
 <mat-card *ngIf="address">
@@ -19,11 +31,19 @@
             </p>
             <p class="align-with-icon">
                 <mat-icon color="primary">phone</mat-icon>
-                <a href="tel:{{ address.phone }}">{{ address.phone }}</a>
+                <a [attr.aria-label]="address.name+' anrufen'"
+                   href="tel:{{ address.phone }}"
+                   matTooltip="Anrufen">
+                    {{ address.phone }}
+                </a>
             </p>
             <p class="align-with-icon">
                 <mat-icon color="primary">mail</mat-icon>
-                <a href="mailto:{{ address.mail }}">{{ address.mail }}</a>
+                <a [attr.aria-label]="'E-Mail an ' +address.name+' schreiben'"
+                   href="mailto:{{ address.mail }}"
+                   matTooltip="E-Mail schreiben">
+                    {{ address.mail }}
+                </a>
             </p>
         </mat-card-content>
         <mat-card-content *ngIf="editing" class="input-grid">
@@ -81,18 +101,27 @@
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button (click)="onEditAddress()" *ngIf="!editing"
-                    color="accent" mat-flat-button>
+            <button (click)="onEditAddress()"
+                    *ngIf="!editing"
+                    [attr.aria-label]="'Adressbucheintrag für ' + address.name + ' bearbeiten'"
+                    color="accent"
+                    mat-flat-button>
                 <mat-icon>edit</mat-icon>
                 Bearbeiten
             </button>
-            <button (click)="onDeleteAddress()" *ngIf="!editing"
-                    color="warn" mat-flat-button>
+            <button (click)="onDeleteAddress()"
+                    *ngIf="!editing"
+                    [attr.aria-label]="'Adressbucheintrag für ' + address.name + ' bearbeiten'"
+                    color="warn"
+                    mat-flat-button>
                 <mat-icon>delete_forever</mat-icon>
                 Löschen
             </button>
-            <button *ngIf="editing" color="primary"
-                    mat-flat-button type="submit">
+            <button *ngIf="editing"
+                    [attr.aria-label]="'Änderungen am Adressbucheintrag für ' + address.name + ' speichern'"
+                    color="primary"
+                    mat-flat-button
+                    type="submit">
                 <mat-icon>save</mat-icon>
                 Speichern
             </button>

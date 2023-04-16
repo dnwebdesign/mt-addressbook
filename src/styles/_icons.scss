@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Material Icons';
+  src: url('../assets/fonts/MaterialIcons-Regular.eot');
+  src: local('Material Icons'), local('MaterialIcons-Regular'),
+  url('../assets/fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+  url('../assets/fonts/MaterialIcons-Regular.woff') format('woff'),
+  url('../assets/fonts/MaterialIcons-Regular.ttf') format('truetype'),
+  url('../assets/fonts/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+}

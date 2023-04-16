@@ -4,6 +4,7 @@
 @import "header";
 @import "content";
 @import "footer";
+@import "icons";
 @import "helpers";
 @import "material-mods";
 
@@ -19,7 +20,7 @@ mt-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
+
   .container {
     max-width: 600px;
     margin: auto;
